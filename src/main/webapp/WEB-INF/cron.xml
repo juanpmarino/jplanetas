@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+<!-- 
+  <cron>
+    <url>/init?execute_job</url>
+    <description>Repopulate the database every 2 hours.</description>
+    <schedule>every 2 hours</schedule>
+  </cron>
+   -->
+</cronentries>

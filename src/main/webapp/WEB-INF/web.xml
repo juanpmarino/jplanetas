@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<servlet>
+		<servlet-name>clima</servlet-name>
+		<servlet-class>com.jpmarino.jplanetas.web.ClimaServlet</servlet-class>
+	</servlet>
+	<servlet>
+        <servlet-name>SystemServiceServlet</servlet-name>
+        <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
+        <init-param>
+            <param-name>services</param-name>
+            <param-value>com.jpmarino.jplanetas.web.ClimaAPI</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SystemServiceServlet</servlet-name>
+        <url-pattern>/_ah/spi/*</url-pattern>
+    </servlet-mapping>
+    <!-- 
+	<servlet-mapping>
+		<servlet-name>clima</servlet-name>
+		<url-pattern>/clima</url-pattern>
+	</servlet-mapping>
+	 -->
+	<servlet-mapping>
+		<servlet-name>clima</servlet-name>
+		<url-pattern>/init</url-pattern>
+	</servlet-mapping>
+		<servlet-mapping>
+		<servlet-name>clima</servlet-name>
+		<url-pattern>/job</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>clima.jsp</welcome-file>
+	</welcome-file-list>
+	<filter>
+		<filter-name>ObjectifyFilter</filter-name>
+		<filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>ObjectifyFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<listener>
+		<listener-class>com.jpmarino.jplanetas.web.OfyHelper</listener-class>
+	</listener>
+</web-app>
